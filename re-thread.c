@@ -1,11 +1,11 @@
 #include <pthread.h>
 #include <stdio.h>
-
+​
 #define NUM_THREADS 10
 #define NUM_DATA 100000
 unsigned long data[NUM_DATA][3];
 unsigned long sum = 0;
-
+​
 void *thread1(void *pParam); //スレッド1
 void *thread2(void *pParam); //スレッド2
 void *thread3(void *pParam); //スレッド3
@@ -16,12 +16,12 @@ void *thread1(void *pParam); //スレッド7
 void *thread2(void *pParam); //スレッド8
 void *thread3(void *pParam); //スレッド9
 void *thread1(void *pParam); //スレッド10
-
-int ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10;
+​
+int ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10, roop;
 int count[10];
-
+​
 pthread_mutex_t mutex; //2つのスレッド間で変数の保護を行う
-
+​
 //スレッド１
 void *thread1(void *pParam)
 {
@@ -39,7 +39,7 @@ void *thread1(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド2
 void *thread2(void *pParam)
 {
@@ -57,7 +57,7 @@ void *thread2(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド3
 void *thread3(void *pParam)
 {
@@ -75,7 +75,7 @@ void *thread3(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド4
 void *thread4(void *pParam)
 {
@@ -93,7 +93,7 @@ void *thread4(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド5
 void *thread5(void *pParam)
 {
@@ -111,7 +111,7 @@ void *thread5(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド6
 void *thread6(void *pParam)
 {
@@ -129,7 +129,7 @@ void *thread6(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド7
 void *thread7(void *pParam)
 {
@@ -147,7 +147,7 @@ void *thread7(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド8
 void *thread8(void *pParam)
 {
@@ -165,7 +165,7 @@ void *thread8(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド9
 void *thread9(void *pParam)
 {
@@ -183,7 +183,7 @@ void *thread9(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 //スレッド10
 void *thread10(void *pParam)
 {
@@ -201,7 +201,7 @@ void *thread10(void *pParam)
   pthread_mutex_unlock(&mutex);
   return NULL;
 }
-
+​
 int main(int argc, char *argv[])
 {
   pthread_t tid1, tid2, tid3, tid4, tid5, tid6, tid7, tid8, tid9, tid10; // スレッド識別変数
@@ -235,59 +235,26 @@ int main(int argc, char *argv[])
   pthread_join(tid8, NULL);
   pthread_join(tid9, NULL);
   pthread_join(tid10, NULL);
-
+​
   pthread_mutex_destroy(&mutex);
   printf("ans: %lu\n", sum);
-
+​
   for (i = 0; i < NUM_DATA; i++)
   {
-    if (data[i][2] == 1)
+    for (roop = 0; roop <= 10; roop++)
     {
-      count[0]++;
-    }
-    else if (data[i][2] == 2)
-    {
-      count[1]++;
-    }
-    else if (data[i][2] == 3)
-    {
-      count[2]++;
-    }
-    else if (data[i][2] == 4)
-    {
-      count[3]++;
-    }
-    else if (data[i][2] == 5)
-    {
-      count[4]++;
-    }
-    else if (data[i][2] == 6)
-    {
-      count[5]++;
-    }
-    else if (data[i][2] == 7)
-    {
-      count[6]++;
-    }
-    else if (data[i][2] == 8)
-    {
-      count[7]++;
-    }
-    else if (data[i][2] == 9)
-    {
-      count[8]++;
-    }
-    else if (data[i][2] == 10)
-    {
-      count[9]++;
+      if (data[i][2] == roop + 1)
+      {
+        count[roop]++;
+      }
     }
   }
-
+​
   //ランダムなThread1つのみで合計加算数を表示します。
   for (int i = 0; i <= 10; i++)
   {
     printf("Thread%d : %d\n", i, count[i]);
   }
-
+​
   return 0;
 }
