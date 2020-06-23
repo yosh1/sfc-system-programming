@@ -9,13 +9,13 @@ unsigned long sum = 0;
 void *thread1(void *pParam); //スレッド1
 void *thread2(void *pParam); //スレッド2
 void *thread3(void *pParam); //スレッド3
-void *thread1(void *pParam); //スレッド4
-void *thread2(void *pParam); //スレッド5
-void *thread3(void *pParam); //スレッド6
-void *thread1(void *pParam); //スレッド7
-void *thread2(void *pParam); //スレッド8
-void *thread3(void *pParam); //スレッド9
-void *thread1(void *pParam); //スレッド10
+void *thread4(void *pParam); //スレッド4
+void *thread5(void *pParam); //スレッド5
+void *thread6(void *pParam); //スレッド6
+void *thread7(void *pParam); //スレッド7
+void *thread8(void *pParam); //スレッド8
+void *thread9(void *pParam); //スレッド9
+void *thread10(void *pParam); //スレッド10
 ​
 int ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10, roop;
 int count[10];
@@ -217,12 +217,12 @@ int main(int argc, char *argv[])
   ans1 = pthread_create(&tid1, NULL, thread1, NULL);
   ans2 = pthread_create(&tid2, NULL, thread2, NULL);
   ans3 = pthread_create(&tid3, NULL, thread3, NULL);
-  ans4 = pthread_create(&tid1, NULL, thread1, NULL);
-  ans5 = pthread_create(&tid2, NULL, thread2, NULL);
-  ans6 = pthread_create(&tid3, NULL, thread3, NULL);
-  ans7 = pthread_create(&tid1, NULL, thread1, NULL);
-  ans8 = pthread_create(&tid2, NULL, thread2, NULL);
-  ans9 = pthread_create(&tid3, NULL, thread3, NULL);
+  ans4 = pthread_create(&tid4, NULL, thread1, NULL);
+  ans5 = pthread_create(&tid5, NULL, thread2, NULL);
+  ans6 = pthread_create(&tid6, NULL, thread3, NULL);
+  ans7 = pthread_create(&tid7, NULL, thread1, NULL);
+  ans8 = pthread_create(&tid8, NULL, thread2, NULL);
+  ans9 = pthread_create(&tid9, NULL, thread3, NULL);
   ans10 = pthread_create(&tid10, NULL, thread10, NULL);
   // スレッド終了待ち
   pthread_join(tid1, NULL);
