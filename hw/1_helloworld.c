@@ -6,3 +6,22 @@ printfを使わず、writeシステムコールを使って、Helloworldとい�
 もちろん、printf系のライブラリは利用しないでください．
 gettimeofdayシステムコールを使ってください
 */
+
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/time.h>
+
+int main(void)
+{
+	char *str = "Helloworld";
+	for (int i = 0; i < strlen(str); i++)
+	{
+			write(1, &str[i], 1);
+	}
+
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  
+	return 0;
+}
