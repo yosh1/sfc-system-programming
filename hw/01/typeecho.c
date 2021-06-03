@@ -10,8 +10,8 @@ This is a pen !
 #include <stdio.h>
 
 int main(int argc, char *argv[]){
-    char str[80];
-    scanf("%s", str);
+    char str[800];
+    gets(str);
     printf("%s", str);
    return 0;
 }
